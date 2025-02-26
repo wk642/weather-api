@@ -55,3 +55,5 @@ At client:
 8. Goto your .gitignore and add `.env`
 9. When you do git status, you should not see the .env file, but you should see .gitignore. Please commit the changes.
 ___
+
+In order to run the application you need to cd into server, run `node server.js`
