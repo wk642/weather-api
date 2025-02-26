@@ -1,11 +1,16 @@
-import express from 'express';
-const app = express();
-const port = 3000;
+import express from "express";
 
-app.get('/', (req, res) => {
-  res.send("Welcome to my Weather app");
+const app = express();
+
+//Set the port that you want the server to run on
+const PORT = process.env.PORT || 5000;
+
+//creates an endpoint for the route /api
+app.get("/api", (req, res) => {
+  res.json({ message: "Hello from ExpressJS" });
 });
 
-app.listen(port, () => {
-  console.log(`Serving listening at http://localhost:${port}`);
+// console.log that your server is up and running
+app.listen(PORT, () => {
+  console.log(`Server listening on ${PORT}`);
 });
