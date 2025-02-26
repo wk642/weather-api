@@ -23,9 +23,23 @@ ___
 ## Clone your project
   `git clone 
 ## Things to install to run the project 
+At the root of the project (so where you cloned it)
 - [ ]`npm install`
 - [ ]`npm install dotenv`
 - [ ]`npm install express`
+- [ ]`npm install cors`
+
+At server:
+- [ ]`npm install`
+- [ ]`npm install dotenv`
+- [ ]`npm install express`
+- [ ]`npm install cors`
+
+At client:
+- [ ]`npm install`
+- [ ]`npm install dotenv`
+- [ ]`npm install express`
+- [ ]`npm install cors`
 
 ## Setting up your api key
 1. goto [OpenWeatherAPI](https://openweathermap.org/api);
