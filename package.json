@@ -2,11 +2,9 @@
   "name": "weather-api",
   "private": true,
   "version": "0.0.0",
-  "main": "./server/index.js",
   "type": "module",
   "scripts": {
-    "start": "node ./server/index.js",
-    "server": "nodemon ./server/index.js",
+    "server": "nodemon ./server/server.js",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
