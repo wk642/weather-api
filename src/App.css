@@ -12,8 +12,9 @@ body {
 .wrapper {
   border-color: 10px solid green;
   display: grid;
-  grid-template-columns: 25% 25% 25%; 
-  gap: 5%;
+  grid-template-columns: 28% 33% 28%; 
+  margin: 3%;
+  gap: 4%;
   width: 100%;
 }
 
