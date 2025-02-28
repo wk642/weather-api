@@ -22,6 +22,35 @@ function App() {
     setCity(userCityInput.target.value);
   };
 
+  // Grab the image
+  const getWeatherImage = (description) => {
+    console.log(description);
+    // Clear sky 01d
+    if (description.includes("clear sky")) {
+      return "https://openweathermap.org/img/wn/01d@2x.png"; 
+    } // Few Cloud 02d
+    else if (description.includes("few clouds")) {
+      return "https://openweathermap.org/img/wn/02d@2x.png"; 
+    } // Scattered Clouds 03d
+    else if (description.includes("scattered clouds")) {
+      return "https://openweathermap.org/img/wn/03d@2x.png"; 
+    } // Broken Clouds 04d
+    else if (description.includes("broken clouds")) {
+      return "https://openweathermap.org/img/wn/04d@2x.png"; 
+    } // Overcast Clouds 04d
+    else if (description.includes("overcast clouds")) {
+      return "https://openweathermap.org/img/wn/04d@2x.png"; 
+    } else if (description.includes("rain")) {
+      return "https://openweathermap.org/img/wn/10d@2x.png"; // Rain
+    } else if (description.includes("snow")) {
+      return "https://openweathermap.org/img/wn/13d@2x.png"; // Snow
+    } else if (description.includes("thunderstorm")) {
+      return "https://openweathermap.org/img/wn/11d@2x.png"; // Thunderstorm
+    } else {
+      return "https://openweathermap.org/img/wn/50d@2x.png"; // Default image (mist)
+    }
+  };
+
   return (
     <form className="form" onSubmit={handleSubmit}>
       <h1>Weather</h1>
@@ -39,7 +68,10 @@ function App() {
         {/* If weather data exists pull a minimum of three things to display */}
         {weatherData &&( 
           <div>
-            <h3>Weather in {weatherData.name}</h3>
+            <h3>{weatherData.name}</h3>
+            <img
+              src={getWeatherImage(weatherData.weather[0].description)}
+            />
             <p>Temperature: {weatherData.main.temp}</p>
             <p>Feels Like: {weatherData.main.feels_like}</p>
             <p>Description: {weatherData.weather[0].description}</p>
