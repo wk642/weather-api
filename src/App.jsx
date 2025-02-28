@@ -56,14 +56,18 @@ function App() {
     } // Overcast Clouds 04d
     else if (description.includes("overcast clouds")) {
       return "https://openweathermap.org/img/wn/04d@2x.png"; 
-    } else if (description.includes("rain")) {
-      return "https://openweathermap.org/img/wn/10d@2x.png"; // Rain
-    } else if (description.includes("snow")) {
-      return "https://openweathermap.org/img/wn/13d@2x.png"; // Snow
-    } else if (description.includes("thunderstorm")) {
-      return "https://openweathermap.org/img/wn/11d@2x.png"; // Thunderstorm
-    } else {
-      return "https://openweathermap.org/img/wn/50d@2x.png"; // Default image (mist)
+    } // Rain
+    else if (description.includes("rain")) {
+      return "https://openweathermap.org/img/wn/10d@2x.png"; 
+    } // Snow
+    else if (description.includes("snow")) {
+      return "https://openweathermap.org/img/wn/13d@2x.png"; 
+    } // Thunderstorm
+    else if (description.includes("thunderstorm")) {
+      return "https://openweathermap.org/img/wn/11d@2x.png"; 
+    } // Default image (mist) in case something doesn't match
+    else {
+      return "https://openweathermap.org/img/wn/50d@2x.png"; 
     }
   };
 
