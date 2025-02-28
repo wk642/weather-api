@@ -32,5 +32,22 @@ app.get("/weather/:city", async (req, res) => {
   }
 });
 
+// use the jokes api https://v2.jokeapi.dev/
+app.get("/joke", async (req, res) => {
+  const { city, weatherDescription, temperature } = req.params;
+  let jokeApiUrl = "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=single";
+  try {
+    const response = await fetch(jokeApiUrl);
+    const jokeData = await response.json();
+    if(jokeData.error){
+      return res.status(500).json({ error: jokeData.message });
+    }
+    res.json({ joke: jokeData.joke });
+  } catch (error) {
+    console.error("Error fetching joke:", error);
+    res.status(500).json({ error: "Failed to fetch joke" });
+  }
+});
+
 // start the server
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
