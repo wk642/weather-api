@@ -1,12 +1,20 @@
-//Creating a form component
-function Form() {
+import React from "react";
+
+function Form({ city, onChangeCity, handleSubmit }) {
   return (
-    <div className = "form-div">
-      <form className = "form.js">
-        <input placeholder="Enter a city name"/>
-      </form>
-    </div>
-  )
+    <form className="form" onSubmit={handleSubmit}>
+      <input
+        placeholder="Please enter a city"
+        type="text"
+        value={city}
+        onChange={onChangeCity}
+        required
+      />
+      <br />
+      <button type="submit">Submit</button>
+      <br />
+    </form>
+  );
 }
 
 export default Form;

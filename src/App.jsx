@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import Form from "./components/Form"
 function App() {
   // Put all of our states here
   const [weatherData, setWeatherData] = useState(null);
@@ -52,34 +52,30 @@ function App() {
   };
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
+    <div>
       <h1>Weather</h1>
-      <input
-        placeholder="Please enter a city"
-        type="text"
-        value={city}
-        onChange={onChangeCity}
-        required
-      />
-      <br />
-      <button type="submit" >Submit</button>
-      <br />
-      <div className="data">
-        {/* If weather data exists pull a minimum of three things to display */}
-        {weatherData &&( 
-          <div>
-            <h3>{weatherData.name}</h3>
-            <img
-              src={getWeatherImage(weatherData.weather[0].description)}
-            />
-            <p>Temperature: {weatherData.main.temp}</p>
-            <p>Feels Like: {weatherData.main.feels_like}</p>
-            <p>Description: {weatherData.weather[0].description}</p>
-          </div>
-        )}
-      </div>
-      <label>You are looking at the city : {city}</label>
-    </form>
+        <Form 
+          city={city}
+          onChangeCity={onChangeCity}
+          handleSubmit={handleSubmit} 
+        />
+        <div className="data">
+          {/* If weather data exists pull a minimum of three things to display */}
+          {weatherData &&( 
+            <div>
+              <h3>{weatherData.name}</h3>
+              <img
+                src={getWeatherImage(weatherData.weather[0].description)}
+              />
+              <p>Temperature: {weatherData.main.temp}</p>
+              <p>Feels Like: {weatherData.main.feels_like}</p>
+              <p>Description: {weatherData.weather[0].description}</p>
+            </div>
+          )}
+        </div>
+        <label>You are looking at the city : {city}</label>
+    </div>
+
   );
 }
 
