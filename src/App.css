@@ -1,3 +1,6 @@
+/* review input styling against bg for accessibility, they look they blend together */
+/* make input box a little bigger maybe to match or close to make match the button input */
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -33,3 +36,4 @@ input {
 ::placeholder {
   color: rgb(202, 202, 202);
 }
+
