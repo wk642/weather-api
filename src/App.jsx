@@ -1,33 +1,48 @@
 import { useState } from "react";
-import Form from "./components/Form"
-//Creating a form component
-// function Form() {
-//   return (
-//     <div className = "form-div">
-//       <form className = "form">
-//         <input placeholder="Enter a city name"/>
-//       </form>
-//     </div>
-//   )
-// }
-function App() {
-  const [data, setData] = useState("");
 
-  const connectToBackend = () => {
-    fetch("http://localhost:5000/weather/:city")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
+function App() {
+  // Put all of our states here
+  const [weatherData, setWeatherData] = useState();
+  const [city, setCity] = useState("");
+
+  // When we submiti the city info
+  const handleSubmit = async (event) => {
+    // Stop it from reloading
+    event.preventDefault()
+    // Get all the data using the city
+    const response = await fetch(`http://localhost:5000/weather/${city}`);
+    // Get the whole response of all the info and store it
+    const data = await response.json();
+    // set the state to data
+    setWeatherData(data);
+  };
+
+  // Grabing what the user is typing in the city
+  const onChangeCity = (userCityInput) => {
+    setCity(userCityInput.target.value);
   };
 
   return (
-    <div className="app">
+    <form className="form" onSubmit={handleSubmit}>
       <h1>Weather</h1>
-      <Form />
-      <button onClick={connectToBackend}>Get weather</button>
+      <input
+        placeholder="Please enter a city"
+        type="text"
+        value={city}
+        onChange={onChangeCity}
+        required
+      />
+      <br />
+      <button type="submit" >Submit</button>
+      <br />
       <div className="data">
-        {data}
+        <div>
+          <h3>Weather Data:</h3>
+          <p>{JSON.stringify(weatherData)}</p>
+        </div>
       </div>
-    </div>
+      <label>You are looking at the city : {city}</label>
+    </form>
   );
 }
 
