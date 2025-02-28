@@ -7,6 +7,7 @@
   5. [Setting up your api key](#apikey)
   6. [How to run this](#run)
   7. [What you should see](#see)
+  8. [Some nice things to have in the future](#niceToHaves)
 ## OBJECTIVE: <a name="objective"></a>
 We will be using the [Open Weather API](https://openweathermap.org/api) and the [Joke API](https://v2.jokeapi.dev/) as well. 
 ## Prerequisites: <a name="prerequisites"></a>
@@ -53,8 +54,10 @@ We will be using the [Open Weather API](https://openweathermap.org/api) and the 
 
 ## What you should see <a name="see"></a>
 Here's a demo:
-![weather-api-demo](https://github.com/user-attachments/assets/ad7586fd-5545-4efc-9c40-e4d8dfee133f)
-
+![weather-api-demo](https://github.com/user-attachments/assets/ad7586fd-5545-4efc-9c40-e4d8dfee133f)  
 
 What the backend looks like: (weather on the left side, jokes on the right)
 <img src="./src/assets/back-end.png"/>
+## Some nice to have in the future <a name="niceToHave></a>
+- [ ] change the entire theme of the website based on weather
+- [ ] display an avatar that will dress accordingly to the weather <- inspired by the fact that my kiddo will "check the weather" and then dress the opposite
