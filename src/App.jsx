@@ -4,20 +4,33 @@ import DisplayWeatherData from "./components/DisplayWeatherData";
 
 function App() {
   // Put all of our states here
+  // weather
   const [weatherData, setWeatherData] = useState(null);
   const [city, setCity] = useState("");
+  // jokes
+  const [joke, setJoke] = useState("");
 
-  // When we submiti the city info
+  // weather section 
+  // When we submit the city info
   const handleSubmit = async (event) => {
     // Stop it from reloading
     event.preventDefault();
+    try{
+      // Get all the data using the city
+      const response = await fetch(`http://localhost:5000/weather/${city}`);
+      // Get the whole response of all the info and store it
+      const data = await response.json();
+      // set the state to data
+      setWeatherData(data);
 
-    // Get all the data using the city
-    const response = await fetch(`http://localhost:5000/weather/${city}`);
-    // Get the whole response of all the info and store it
-    const data = await response.json();
-    // set the state to data
-    setWeatherData(data);
+      // getting the joke her
+      if (data && data.weather && data.weather[0]) {
+        getJoke(city, data.weather[0].description, data.main.temp);
+      }
+    } catch (error) {
+      console.error("Error in getting weather:", error);
+      setWeatherData("null");
+    }
   };
 
   // Grabing what the user is typing in the city
@@ -54,8 +67,28 @@ function App() {
     }
   };
 
+  // Jokes section 
+  const getJoke = async (city, weatherDescription, temperature) => {
+    try {
+      const response = await fetch(`https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=single`
+      );
+      const data = await response.json();
+      setJoke(data.joke);
+    } catch (error) {
+      console.error("Error fetching joke:", error);
+      setJoke("Failed to fetch joke.");
+    }
+  };
+
+
   return (
     <div className="wrapper">
+      <div className="joke-div">
+        <h2> Joke </h2>
+        {joke && 
+          <p>{joke}</p>
+        }
+      </div>
       <div className="form-div">
         <h1>Weather</h1>
           <Form 

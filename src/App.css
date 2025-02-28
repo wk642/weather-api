@@ -2,13 +2,18 @@
   max-width: 1280px;
   margin: 0 auto;
   text-align: center;
+  background-color: rgb(32, 31, 31);
 }
 
 .wrapper {
   display: grid;
-  grid-template-columns: 50% 50%; 
-  gap: 15%;
-  width: 100%;
+  grid-template-columns: 25% 25% 25%; 
+  gap: 5%;
+  width: 90%;
+}
+
+.joke-div {
+  text-align: center;
 }
 
 .form-div {
@@ -23,4 +28,8 @@ input {
   background-color: rgb(101, 101, 101);
   padding: 5%;
   margin-bottom: 5%;
+}
+
+::placeholder {
+  color: rgb(202, 202, 202);
 }
