@@ -1,4 +1,6 @@
 # Weather API App
+This is a small weather api app that pulls data from the opensource weather api website. Users can pick any city and receive a fun surprise with every new reload! 
+
 ## Table of Contents
   1. [Objectives](#objective)
   2. [Prerequisites](#prerequisites)
