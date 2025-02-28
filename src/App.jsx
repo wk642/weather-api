@@ -1,5 +1,7 @@
 import { useState } from "react";
-import Form from "./components/Form"
+import Form from "./components/Form";
+import DisplayWeatherData from "./components/DisplayWeatherData";
+
 function App() {
   // Put all of our states here
   const [weatherData, setWeatherData] = useState(null);
@@ -8,7 +10,8 @@ function App() {
   // When we submiti the city info
   const handleSubmit = async (event) => {
     // Stop it from reloading
-    event.preventDefault()
+    event.preventDefault();
+
     // Get all the data using the city
     const response = await fetch(`http://localhost:5000/weather/${city}`);
     // Get the whole response of all the info and store it
@@ -59,21 +62,11 @@ function App() {
           onChangeCity={onChangeCity}
           handleSubmit={handleSubmit} 
         />
-        <div className="data">
-          {/* If weather data exists pull a minimum of three things to display */}
-          {weatherData &&( 
-            <div>
-              <h3>{weatherData.name}</h3>
-              <img
-                src={getWeatherImage(weatherData.weather[0].description)}
-              />
-              <p>Temperature: {weatherData.main.temp}</p>
-              <p>Feels Like: {weatherData.main.feels_like}</p>
-              <p>Description: {weatherData.weather[0].description}</p>
-            </div>
-          )}
-        </div>
-        <label>You are looking at the city : {city}</label>
+        <DisplayWeatherData 
+          weatherData={weatherData}
+          getWeatherImage={getWeatherImage}
+        />
+        {/* <label>You are looking at the city : {city}</label> */}
     </div>
 
   );
