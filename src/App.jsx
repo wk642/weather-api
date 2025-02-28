@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Form from "./components/Form";
 import DisplayWeatherData from "./components/DisplayWeatherData";
-
+import DisplayJokesData from "./components/DisplayJokesData"
 function App() {
   // Put all of our states here
   // weather
@@ -25,7 +25,7 @@ function App() {
 
       // getting the joke her
       if (data && data.weather && data.weather[0]) {
-        getJoke(city, data.weather[0].description, data.main.temp);
+        getJoke();
       }
     } catch (error) {
       console.error("Error in getting weather:", error);
@@ -70,8 +70,7 @@ function App() {
   // Jokes section 
   const getJoke = async () => {
     try {
-      const response = await fetch(`https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=single`
-      );
+      const response = await fetch(`http://localhost:5000/joke`);
       const data = await response.json();
       setJoke(data.joke);
     } catch (error) {
@@ -83,12 +82,14 @@ function App() {
 
   return (
     <div className="wrapper">
+      {/* Jokes */}
       <div className="joke-div">
-        <h2> Joke </h2>
-        {joke && 
-          <p>{joke}</p>
-        }
+        <DisplayJokesData 
+          joke={joke}
+        />
       </div>
+
+      {/* Form */}
       <div className="form-div">
         <h1>Weather</h1>
           <Form 
@@ -97,6 +98,8 @@ function App() {
             handleSubmit={handleSubmit} 
           />
       </div>
+
+      {/* Weather */}
       <div className="weatherData-div">
         <DisplayWeatherData 
           weatherData={weatherData}
