@@ -55,20 +55,22 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>Weather</h1>
-        <Form 
-          city={city}
-          onChangeCity={onChangeCity}
-          handleSubmit={handleSubmit} 
-        />
+    <div className="wrapper">
+      <div className="form-div">
+        <h1>Weather</h1>
+          <Form 
+            city={city}
+            onChangeCity={onChangeCity}
+            handleSubmit={handleSubmit} 
+          />
+      </div>
+      <div className="weatherData-div">
         <DisplayWeatherData 
           weatherData={weatherData}
           getWeatherImage={getWeatherImage}
         />
-        {/* <label>You are looking at the city : {city}</label> */}
+      </div>
     </div>
-
   );
 }
 
