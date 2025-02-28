@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function App() {
   // Put all of our states here
-  const [weatherData, setWeatherData] = useState();
+  const [weatherData, setWeatherData] = useState(null);
   const [city, setCity] = useState("");
 
   // When we submiti the city info
@@ -36,10 +36,15 @@ function App() {
       <button type="submit" >Submit</button>
       <br />
       <div className="data">
-        <div>
-          <h3>Weather Data:</h3>
-          <p>{JSON.stringify(weatherData)}</p>
-        </div>
+        {/* If weather data exists pull a minimum of three things to display */}
+        {weatherData &&( 
+          <div>
+            <h3>Weather in {weatherData.name}</h3>
+            <p>Temperature: {weatherData.main.temp}</p>
+            <p>Feels Like: {weatherData.main.feels_like}</p>
+            <p>Description: {weatherData.weather[0].description}</p>
+          </div>
+        )}
       </div>
       <label>You are looking at the city : {city}</label>
     </form>
