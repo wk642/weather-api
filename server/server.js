@@ -14,13 +14,15 @@ app.get("/api", (req, res) => {
 });
 
 app.get("/weather/:city", async (req, res) => {
-  const city = req.params.city;
   const apiKey = process.env.WEATHER_API_KEY;
   // console.log("api", apiKey);
-  const units = "metric";
+  const params = new URLSearchParams({
+    q: req.params.city,
+    appid: apiKey,
+    units: "imperial",
+  })
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-
+  const url = `https://api.openweathermap.org/data/2.5/weather?${params}`;
   try {
     const response = await fetch(url);
     const data = await response.json();
