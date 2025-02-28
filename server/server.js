@@ -10,14 +10,16 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/api", (req, res) => {
-  res.json({ message: "Hello from ExpressJS" });
+  res.json({ message: "Hello succesful connection has been made!" });
 });
 
 app.get("/weather/:city", async (req, res) => {
   const city = req.params.city;
   const apiKey = process.env.WEATHER_API_KEY;
-  console.log("api", apiKey);
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+  // console.log("api", apiKey);
+  const units = "metric";
+
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
 
   try {
     const response = await fetch(url);
